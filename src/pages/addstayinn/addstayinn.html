@@ -1,0 +1,106 @@
+<!--
+  Generated template for the AddstayinnPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button> 
+    <ion-title>Add Stay Inns</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-label>&nbsp;Select your stay inn location</ion-label>
+
+<div #map2  id="map2" style="width:100%;height:400px !important;"></div>
+ <form [formGroup]="form">
+  
+ <ion-toolbar color="primary">
+    <ion-buttons>
+      <button ion-button icon-left (click)="presentActionSheet()">
+        <ion-icon name="camera"></ion-icon>Select Image
+      </button>
+      <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null">
+
+    </ion-buttons>
+  </ion-toolbar>
+
+      <div formGroupName="name">
+      <ion-item>
+      <ion-label  stacked>Title:</ion-label>
+      <ion-input  formControlName="title" placeholder="Aling Nena's Boarding House"></ion-input>
+      </ion-item>
+      <ion-item>
+      <ion-label  stacked>Address:</ion-label>
+      <ion-textarea formControlName="address" placeholder="p sherman 42 wallaby way sydney"></ion-textarea>
+      </ion-item>
+      <ion-item>
+      <ion-label  stacked>Contact:</ion-label>
+      <ion-input  formControlName="contact" placeholder="09XXXXXXXXX"></ion-input>
+      </ion-item>
+      <ion-item>
+      <ion-label  stacked>Price:</ion-label>
+      <ion-input  formControlName="price" placeholder="P1000 - P3000"></ion-input>
+      </ion-item>
+      <ion-item>
+    <ion-label   stacked>Type</ion-label>
+    <ion-select formControlName="type" >
+      <ion-option value="Apartment">Apartment</ion-option>
+      <ion-option value="Boarding/Bed Spacer">Boarding/Bed Spacer</ion-option>
+      <ion-option value="Dormitory">Dormitory</ion-option>
+      <ion-option value="Hotel">Hotel</ion-option>
+      <ion-option value="Motel">Motel</ion-option>
+      <ion-option value="Transient">Transient</ion-option>
+    </ion-select>
+  </ion-item>
+      </div>
+
+  <ion-buttons>
+       <button ion-button block (click)="testform()">
+        <ion-icon name="ion-plus-circled"></ion-icon>Add Stay Inn
+      </button>
+    </ion-buttons>
+    
+    </form>
+<!--<form (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label>Title</ion-label>
+        <ion-input type="text" [(ngModel)]="todo.title" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Address</ion-label>
+        <ion-textarea [(ngModel)]="todo.address" formControlName="address"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>Contact</ion-label>
+        <ion-input type="text" [(ngModel)]="todo.contact" formControlName="contact"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Price</ion-label>
+        <ion-input type="text" [(ngModel)]="todo.price" formControlName="price"></ion-input>
+      </ion-item>
+  <ion-item>
+        <ion-label>
+          Type
+        </ion-label>
+
+        <ion-select formControlName="option" [(ngModel)]="todo.type">
+          <ion-option value="1">Option 1</ion-option>
+          <ion-option value="2">Option 2</ion-option>
+          <ion-option value="3">Option 3</ion-option>
+          <ion-option value="4">Option 4</ion-option>
+        </ion-select>
+      </ion-item>
+        <button ion-button type="submit" block>Add Todo</button>
+    </form>
+    </div>-->
+    
+  
+</ion-content>

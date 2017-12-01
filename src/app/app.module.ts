@@ -11,12 +11,21 @@ import {BrokerListPage} from '../pages/broker-list/broker-list';
 import {BrokerDetailPage} from '../pages/broker-detail/broker-detail';
 import {FavoriteListPage} from '../pages/favorite-list/favorite-list';
 import {AboutPage} from '../pages/about/about';
+import {AccountPage} from '../pages/account/account';
+import {AddstayinnPage} from '../pages/addstayinn/addstayinn';
 
 import {PropertyService} from "../providers/property-service-mock";
 import {BrokerService} from "../providers/broker-service-mock";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FacebookModule } from 'ngx-facebook';
+import { Facebook } from '@ionic-native/facebook';
+import { GlobalvarsProvider } from '../providers/globalvars/globalvars';
+import { Camera } from '@ionic-native/camera';
+import { Transfer } from '@ionic-native/transfer';
+import { File } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path';
 
 @NgModule({
   declarations: [
@@ -27,30 +36,42 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PropertyDetailPage,
     FavoriteListPage,
     BrokerListPage,
-    BrokerDetailPage
+    BrokerDetailPage,
+    AddstayinnPage,
+    AccountPage
+
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    FacebookModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     WelcomePage,
     AboutPage,
+    AddstayinnPage,
     PropertyListPage,
     PropertyDetailPage,
     FavoriteListPage,
     BrokerListPage,
-    BrokerDetailPage
+    BrokerDetailPage,
+    AccountPage,
   ],
-  providers: [
+  providers: [ 
+    Transfer,
+    File,
+    Camera,
+    FilePath,
     StatusBar,
     SplashScreen,
     PropertyService,
-    BrokerService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    BrokerService,SplashScreen, StatusBar, Facebook,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, GlobalvarsProvider,
+    
   ]
 })
 export class AppModule {}
+  

@@ -4,16 +4,22 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
 import {PropertyListPage} from '../pages/property-list/property-list';
-import {BrokerListPage} from '../pages/broker-list/broker-list';
-import {FavoriteListPage} from '../pages/favorite-list/favorite-list';
+//import {BrokerListPage} from '../pages/broker-list/broker-list';
+//import {FavoriteListPage} from '../pages/favorite-list/favorite-list';
 import {WelcomePage} from '../pages/welcome/welcome';
 import {AboutPage} from '../pages/about/about';
+import { AccountPage } from '../pages/account/account';
+import {AddstayinnPage} from '../pages/addstayinn/addstayinn';
+//import { AlertController } from 'ionic-angular';
+
+import { GlobalvarsProvider } from '../providers/globalvars/globalvars';
 
 export interface MenuItem {
     title: string;
     component: any;
     icon: string;
 }
+
 
 @Component({
     templateUrl: 'app.html'
@@ -29,25 +35,30 @@ export class MyApp {
 
     helpMenuItems: Array<MenuItem>;
 
-    constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+    constructor(public platform: Platform,public globalvars: GlobalvarsProvider, public statusBar: StatusBar, public splashScreen: SplashScreen/*,private alertCtrl: AlertController*/) {
         this.initializeApp();
-
+        //this.presentConfirm();
         this.appMenuItems = [
-            {title: 'Properties', component: PropertyListPage, icon: 'home'},
-            {title: 'Brokers', component: BrokerListPage, icon: 'people'},
-            {title: 'Favorites', component: FavoriteListPage, icon: 'star'},
-            {title: 'Get Preapproved', component: WelcomePage, icon: 'checkmark-circle'},
+            {title: 'Stay Inns', component: PropertyListPage, icon: 'home'},
+            {title: 'Add Stay Inns', component: AddstayinnPage, icon: 'md-add-circle'},
+            //{title: 'Brokers', component: BrokerListPage, icon: 'people'},
+            //{title: 'Favorites', component: FavoriteListPage, icon: 'star'},
+            //{title: 'Get Preapproved', component: WelcomePage, icon: 'checkmark-circle'},
         ];
 
         this.accountMenuItems = [
-            {title: 'My Account', component: WelcomePage, icon: 'ios-contact'},
-            {title: 'Logout', component: WelcomePage, icon: 'log-out'},
+            {title: 'Account', component: AccountPage, icon: 'ios-contact'},
+           // {title: 'Logout', component: WelcomePage, icon: 'log-out'},
         ];
 
         this.helpMenuItems = [
-            {title: 'Welcome', component: WelcomePage, icon: 'bookmark'},
+            {title: 'Featured', component: WelcomePage, icon: 'bookmark'},
             {title: 'About', component: AboutPage, icon: 'information-circle'},
         ];
+
+
+
+
 
     }
 
@@ -65,4 +76,28 @@ export class MyApp {
         // we wouldn't want the back button to show in this scenario
         this.nav.setRoot(page.component);
     }
+
+   /* presentConfirm() {
+          let alert = this.alertCtrl.create({
+            title: 'Fb Login',
+            message: 'Stay inn Locator requires you to login to your fb account.',
+            buttons: [
+              {
+                text: 'Close App',
+                role: 'cancel',
+                handler: () => {
+                  this.platform.exitApp();
+                }
+              },
+              {
+                text: 'Agree',
+                handler: () => {
+                    
+                }
+              }
+            ]
+          });
+          alert.present();
+       }*/
+
 }

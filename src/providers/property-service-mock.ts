@@ -1,24 +1,33 @@
 import {Injectable} from '@angular/core';
-import properties from './mock-properties';
+import {Http } from '@angular/http';
 
 @Injectable()
 export class PropertyService {
 
   favoriteCounter: number = 0;
   favorites: Array<any> = [];
+  properties: Array<any>;
 
+  constructor(private http:Http) {
+
+       this.http.get('http://pmt.i-tugue.com/stayinn-backend/api.php?action=get_app_list')
+      .map(response => response.json())
+      .subscribe(res => this.properties = res);
+      
+              
+    }
   findAll() {
-    return Promise.resolve(properties);
+    return Promise.resolve(this.properties);
   }
 
   findById(id) {
-    return Promise.resolve(properties[id - 1]);
+    return Promise.resolve(this.properties[id - 1]);
   }
 
   findByName(searchKey: string) {
     let key: string = searchKey.toUpperCase();
-    return Promise.resolve(properties.filter((property: any) =>
-        (property.title +  ' ' +property.address +  ' ' + property.city + ' ' + property.description).toUpperCase().indexOf(key) > -1));
+    return Promise.resolve(this.properties.filter((property: any) =>
+        (property.title +  ' ' +property.address +  ' ' + property.type + ' ' + property.description).toUpperCase().indexOf(key) > -1));
   }
 
   getFavorites() {
@@ -37,6 +46,10 @@ export class PropertyService {
       this.favorites.splice(index, 1);
     }
     return Promise.resolve();
+  }
+  getproperties()
+  {
+    return Promise.resolve(this.properties);
   }
 
 }

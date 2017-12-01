@@ -9,8 +9,17 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="property-list">
-
+<ion-content>
+      <ion-select placeholder="-select type-" [(ngModel)]="searchKey" (ionChange)="onInput($event)"
+                       (cancel)="onCancel($event)" style="width:50%;float:left;"> 
+        <ion-option value="Apartment">Apartment</ion-option>
+        <ion-option value="Boarding/Bed Spacer">Boarding/Bed Spacer</ion-option>
+        <ion-option value="Dormitory">Dormitory</ion-option>
+        <ion-option value="Hotel">Hotel</ion-option>
+        <ion-option value="Motel">Motel</ion-option>
+        <ion-option value="Transient">Transient</ion-option>
+      </ion-select>
+    
     <ion-list *ngIf="viewMode==='list'">
 
         <ion-item-sliding *ngFor="let property of properties">
@@ -19,25 +28,21 @@
                     <img src="{{property.thumbnail}}"/>
                 </ion-thumbnail>
                 <h2>{{property.title}}</h2>
-                <p>{{property.city}}, {{property.state}} ∙ {{ property.price }}</p>
+                <p>{{property.address}}</p>
             </button>
-            <ion-item-options>
-                <button danger (click)="deleteItem(property)">Delete</button>
-            </ion-item-options>
         </ion-item-sliding>
 
     </ion-list>
-
-    <div *ngIf="viewMode==='map'" style="width:100%;height:100%;" id="map"></div>
-
+    <div *ngIf="viewMode==='map'" style="width:100%;height:90%;" id="map"></div>
 </ion-content>
 
 <ion-footer padding>
     <ion-segment [(ngModel)]="viewMode">
+       
         <ion-segment-button value="list">
             <ion-icon name="list"></ion-icon>
         </ion-segment-button>
-        <ion-segment-button value="map" (ionSelect)="showMap()">
+         <ion-segment-button value="map" (ionSelect)="showMap()">
             <ion-icon name="map"></ion-icon>
         </ion-segment-button>
     </ion-segment>
