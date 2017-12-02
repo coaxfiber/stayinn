@@ -13,7 +13,8 @@ import {AddstayinnPage} from '../pages/addstayinn/addstayinn';
 //import { AlertController } from 'ionic-angular';
 
 import { GlobalvarsProvider } from '../providers/globalvars/globalvars';
-
+import { AdMobFree, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
+ 
 export interface MenuItem {
     title: string;
     component: any;
@@ -35,8 +36,9 @@ export class MyApp {
 
     helpMenuItems: Array<MenuItem>;
 
-    constructor(public platform: Platform,public globalvars: GlobalvarsProvider, public statusBar: StatusBar, public splashScreen: SplashScreen/*,private alertCtrl: AlertController*/) {
+    constructor( public admob: AdMobFree,public platform: Platform,public globalvars: GlobalvarsProvider, public statusBar: StatusBar, public splashScreen: SplashScreen/*,private alertCtrl: AlertController*/) {
         this.initializeApp();
+         this.launchInterstitial();
         //this.presentConfirm();
         this.appMenuItems = [
             {title: 'Stay Inns', component: PropertyListPage, icon: 'home'},
@@ -77,6 +79,22 @@ export class MyApp {
         this.nav.setRoot(page.component);
     }
 
+
+    launchInterstitial() {
+ 
+        let interstitialConfig: AdMobFreeInterstitialConfig = {
+            autoShow: true,
+            id: 'ca-app-pub-1127440969430875/8807385000'
+            //id: Your Ad Unit ID goes here
+        };
+ 
+        this.admob.interstitial.config(interstitialConfig);
+ 
+        this.admob.interstitial.prepare().then(() => {
+            // success
+        });
+ 
+    }
    /* presentConfirm() {
           let alert = this.alertCtrl.create({
             title: 'Fb Login',

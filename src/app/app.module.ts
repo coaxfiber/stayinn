@@ -27,6 +27,7 @@ import { Transfer } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 
+import { AdMobFree } from '@ionic-native/admob-free';
 @NgModule({
   declarations: [
     MyApp,
@@ -64,6 +65,7 @@ import { FilePath } from '@ionic-native/file-path';
     Transfer,
     File,
     Camera,
+    AdMobFree,
     FilePath,
     StatusBar,
     SplashScreen,

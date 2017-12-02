@@ -112,7 +112,7 @@ export class PropertyListPage {
                 }if (property.type=='Apartment') {
                     flag = new LeafIcon({iconUrl: 'assets/leaflet/images/apartmentflag.png'});
                 }if (property.type=='Transient') {
-                    flag = new LeafIcon({iconUrl: 'assets/leaflet/images/bedflag.png'});
+                    flag = new LeafIcon({iconUrl: 'assets/leaflet/images/boardflag.png'});
                 }if (property.type=='Boarding/Bed Spacer') {
                     flag = new LeafIcon({iconUrl: 'assets/leaflet/images/bedflag.png'});
                 }if (property.type=='Dormitory') {
