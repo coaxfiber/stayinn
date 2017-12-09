@@ -84,7 +84,8 @@ export class MyApp {
  
         let interstitialConfig: AdMobFreeInterstitialConfig = {
             autoShow: true,
-            id: 'ca-app-pub-1127440969430875/8807385000'
+            isTesting: true
+            //id: 'ca-app-pub-1127440969430875/8807385000'
             //id: Your Ad Unit ID goes here
         };
  

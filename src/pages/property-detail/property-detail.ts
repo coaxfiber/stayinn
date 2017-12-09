@@ -20,7 +20,8 @@ showBanner() {
  
         let bannerConfig: AdMobFreeBannerConfig = {
             autoShow: true,
-            id: 'ca-app-pub-1127440969430875/2860746143'
+            isTesting: true
+            //id: 'ca-app-pub-1127440969430875/2860746143'
         };
  
         this.admob.banner.config(bannerConfig);
